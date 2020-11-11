@@ -1,0 +1,13 @@
+<mat-drawer-container class="example-container">
+    <mat-drawer-content>
+        <mat-form-field>
+            <mat-label>Select feed category</mat-label>
+            <mat-select (selectionChange)="onChange()" [(value)]="categorySelected">
+                <mat-option *ngFor="let feedCategory of feedCategories" [value]="feedCategory.value">
+                    {{feedCategory.viewValue}}</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </mat-drawer-content>
+</mat-drawer-container>
+
+<feeds-card-list [feeds]="feeds$ |async"></feeds-card-list>

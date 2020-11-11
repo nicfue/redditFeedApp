@@ -8,7 +8,7 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'feeds/:feedUrl',
+    path: 'feeds/:feedsUrl',
     loadChildren: () => import('./feeds/feeds.module').then(m => m.FeedsModule)
   }
 ];

@@ -6,7 +6,7 @@ import { Feed } from './../model/feeds';
   templateUrl: './feeds-card-list.component.html',
   styleUrls: ['./feeds-card-list.component.css']
 })
-export class FeedsCardListComponent  {
+export class FeedsCardListComponent {
   @Input()
   feeds: Feed[] = [];
 

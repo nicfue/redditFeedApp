@@ -1,5 +1,5 @@
 export enum FeedCategories {
-    SWEDEN = 'SWEDEN',
-    ANGULAR = 'ANGULAR',
-    COVID19 = 'COVID19'
+    SWEDEN = 'sweden',
+    ANGULAR = 'angular',
+    COVID19 = 'covid19'
 }

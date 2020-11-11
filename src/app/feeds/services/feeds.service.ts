@@ -28,7 +28,7 @@ export class FeedsServcie {
         return this.http.get<Feed[]>(url)
             .pipe(
                 tap((res) => console.log(res['data'])),
-                map(res => res["data"]["children"]),
+                map(res => (res["data"]["children"]).slice(0, 10)),
                 shareReplay()
             )
     }

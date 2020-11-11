@@ -5,16 +5,20 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from "@angular/material/icon";
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { RouterModule } from '@angular/router';
 import { HomeComponent } from '../home/home.component';
+import { LoadingComponent } from '../loading/loading.component';
 import { FeedsCardListComponent } from './feeds-card-list/feeds-card-list.component';
 import { FeedsRoutingModule } from './feeds-routing.module';
 import { FeedsServcie } from './services/feeds.service';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 
 @NgModule({
   declarations: [
     HomeComponent,
-    FeedsCardListComponent
+    FeedsCardListComponent,
+    LoadingComponent
   ],
   imports: [
     CommonModule,
@@ -23,7 +27,8 @@ import { FeedsServcie } from './services/feeds.service';
     MatIconModule,
     MatSidenavModule,
     MatFormFieldModule,
-    MatSelectModule
+    MatSelectModule,
+    MatProgressSpinnerModule
   ],
   providers: [FeedsServcie]
 })

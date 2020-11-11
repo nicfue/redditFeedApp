@@ -3,9 +3,10 @@
         <mat-card-header>
             <div mat-card-avatar [ngStyle]="{'background-image':' url(' + feed['data'].thumbnail + ')'}"></div>
             <mat-card-subtitle>
-                by: {{feed['data'].author}} created: {{feed['data'].created | date:'short'}}</mat-card-subtitle>
+                by: {{feed['data'].author}} created: {{feed['data'].created*1000 | date:'short'}}</mat-card-subtitle>
             <mat-card-title><a class="feee-link" [href]="'https://www.reddit.com/' + feed['data'].permalink">{{feed['data'].title}}</a></mat-card-title>
         </mat-card-header>
         <div mat-card-content>{{feed['data'].score}}</div>
     </mat-card>
 </ng-container>
+<loading [detectRoutingOnGoing]="true"></loading>

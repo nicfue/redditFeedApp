@@ -1,4 +1,4 @@
-<mat-drawer-container class="example-container">
+<mat-drawer-container class="feed-container">
     <mat-drawer-content>
         <mat-form-field>
             <mat-label>Select feed category</mat-label>
@@ -7,6 +7,16 @@
                     {{feedCategory.viewValue}}</mat-option>
             </mat-select>
         </mat-form-field>
+        <mat-form-field class="feed-form-field">
+            <mat-label>Enter feed</mat-label>
+            <input matInput type="text" #inputFeed [value]="inputFeed.value">
+        </mat-form-field>
+        <button mat-button matSuffix (click)="inputFeed.value = ''">
+            <mat-icon>close</mat-icon>
+        </button>
+        <button mat-button matSuffix (click)="onInputFeed(inputFeed)">
+            <mat-icon>done</mat-icon>
+        </button>
     </mat-drawer-content>
 </mat-drawer-container>
 

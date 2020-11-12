@@ -8,7 +8,7 @@
 <mat-form-field class="feed-form-field" appearance="fill">
     <mat-label>Enter feed</mat-label>
     <input matInput type="text" #inputFeed [value]="inputFeed.value">
-    <button mat-button matSuffix (click)="inputFeed.value = ''">
+    <button mat-button matSuffix (click)="clearInput(inputFeed)">
         <mat-icon>close</mat-icon>
     </button>
     <button mat-button matSuffix (click)="onInputFeed(inputFeed)">
@@ -22,6 +22,6 @@
             {{feeds.value}}</mat-option>
     </mat-select>
 </mat-form-field>
-<div style="background-color: grey; padding: 5px 0 5px 0">
+<div class="home-bg-color">
     <feeds-card-list [feeds]="feeds$ |async"></feeds-card-list>
 </div>

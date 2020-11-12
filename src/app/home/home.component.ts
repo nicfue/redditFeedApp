@@ -74,4 +74,9 @@ export class HomeComponent implements OnInit {
     this.loadFeedData();
   }
 
+  clearInput(text: HTMLInputElement) {
+    this.hasInput = false;
+    return text.value = '';
+  }
+
 }

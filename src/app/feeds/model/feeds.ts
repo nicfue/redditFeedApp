@@ -5,5 +5,6 @@ export interface Feed {
     score: number;
     title: string;
     url: string;
+    id?: string;
 }
 

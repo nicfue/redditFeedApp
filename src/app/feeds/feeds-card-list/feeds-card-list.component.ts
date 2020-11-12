@@ -1,5 +1,6 @@
-import { AfterContentInit, AfterViewChecked, AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Feed } from './../model/feeds';
+
 
 @Component({
   selector: 'feeds-card-list',
@@ -9,9 +10,16 @@ import { Feed } from './../model/feeds';
 export class FeedsCardListComponent {
   @Input()
   feeds: Feed[] = [];
+  showFeedText = false;
+  selectedFeed: Feed;
 
 
   constructor() {
+  }
+
+  openFeedText(feed: Feed) {
+    this.selectedFeed = feed;
+    this.showFeedText = !this.showFeedText;
   }
 
 }

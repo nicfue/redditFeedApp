@@ -16,7 +16,7 @@ import { Feed } from './../feeds/model/feeds';
 
 export class HomeComponent implements OnInit {
   feeds$: Observable<Feed[]>;
-  feedCategories: FeedCategory[] = [
+   feedCategories: FeedCategory[] = [
     { value: FeedCategories.SWEDEN, viewValue: 'Sweden' },
     { value: FeedCategories.ANGULAR, viewValue: 'Angular' },
     { value: FeedCategories.COVID19, viewValue: 'Covid19' }

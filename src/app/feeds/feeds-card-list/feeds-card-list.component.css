@@ -5,3 +5,13 @@
 .feed-link {
     text-decoration: none;
 }
+
+.feed-comments-link {
+    margin-left: 50px;
+    color: #7f8182;
+    text-decoration: none;
+}
+
+mat-icon {
+    vertical-align: middle;
+}

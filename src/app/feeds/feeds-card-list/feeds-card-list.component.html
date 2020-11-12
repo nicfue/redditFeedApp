@@ -3,10 +3,27 @@
         <mat-card-header>
             <div mat-card-avatar [ngStyle]="{'background-image':' url(' + feed['data'].thumbnail + ')'}"></div>
             <mat-card-subtitle>
-                by: {{feed['data'].author}} created: {{feed['data'].created*1000 | date:'short'}}</mat-card-subtitle>
-            <mat-card-title><a class="feee-link" [href]="'https://www.reddit.com/' + feed['data'].permalink">{{feed['data'].title}}</a></mat-card-title>
+                Posted by: {{feed['data'].author}} created: {{feed['data'].created*1000 | date:'short'}}
+            </mat-card-subtitle>
+
+            <mat-card-title><a class="feee-link" [href]="'https://www.reddit.com/' + feed['data'].permalink">{{feed['data'].title}}</a>
+            </mat-card-title>
         </mat-card-header>
-        <div mat-card-content>{{feed['data'].score}}</div>
+        <a mat-raised-button class="feed-comments-link" [href]="'https://www.reddit.com/' + feed['data'].permalink" target="_blank">
+            <mat-icon>comment_bank</mat-icon>
+            {{feed['data'].num_comments}} Comments
+        </a>
+        <button *ngIf="feed['data'].selftext" (click)="openFeedText(feed)">{{showFeedText && (feed['data'].id == selectedFeed['data'].id) ? 'Close' : 'Read More'}}</button>
+
+        <div *ngIf="showFeedText && (feed['data'].id == selectedFeed['data'].id)">
+            <p>
+                {{feed['data'].selftext}}
+            </p>
+        </div>
+
+
+        <p mat-card-content>{{feed['data'].score}}</p>
     </mat-card>
 </ng-container>
+
 <loading [detectRoutingOnGoing]="true"></loading>

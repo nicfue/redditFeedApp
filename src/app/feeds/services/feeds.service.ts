@@ -17,15 +17,21 @@ export class FeedsService {
         const URL_ANGULAR = 'https://www.reddit.com/r/angular/.json';
         const URL_FROM_INPUT = 'https://www.reddit.com/r/' + categorySelected + '/.json';
 
+
         let url;
-        if (categorySelected == FeedCategories.SWEDEN) {
-            url = URL_SWEDEN;
-        } else if (categorySelected == FeedCategories.ANGULAR) {
-            url = URL_ANGULAR;
-        } else if (categorySelected == FeedCategories.COVID19) {
-            url = URL_COVID19
-        } else {
-            url = URL_FROM_INPUT;
+        switch (categorySelected) {
+            case categorySelected == FeedCategories.SWEDEN:
+                url = URL_SWEDEN;
+                break;
+            case categorySelected == FeedCategories.ANGULAR:
+                url = URL_ANGULAR;
+                break;
+            case categorySelected == FeedCategories.COVID19:
+                url = URL_COVID19
+                break;
+            default:
+                url = URL_FROM_INPUT;
+                break;
         }
         return this.http.get<Feed[]>(url)
             .pipe(
@@ -34,9 +40,6 @@ export class FeedsService {
                 shareReplay()
             )
     }
-
-
-
 
 }
 

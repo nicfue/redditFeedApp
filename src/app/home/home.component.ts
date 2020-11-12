@@ -56,7 +56,6 @@ export class HomeComponent implements OnInit {
     const feedsData$ = this.feedsService.loadFeeds(this.hasInput ? this.inputFeed.value : this.categorySelected)
       .pipe(
         map(res => res.slice(0, this.feedLimitSelected)),
-
       );
     this.feeds$ = this.loadingService.showLoaderUntilCompleted(feedsData$);
     const feedCategory = this.hasInput ? this.inputFeed.value : this.categorySelected;

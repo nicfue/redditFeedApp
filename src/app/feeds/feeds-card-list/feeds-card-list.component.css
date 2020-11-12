@@ -17,7 +17,9 @@ mat-icon {
 }
 
 .feed-textarea-container {
-    text-align: center;
+    text-align: left;
+    margin-top: 20px;
+    margin-left: 50px
 }
 
 textarea {

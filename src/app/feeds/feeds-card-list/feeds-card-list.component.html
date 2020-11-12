@@ -3,9 +3,8 @@
         <mat-card-header>
             <div mat-card-avatar [ngStyle]="{'background-image':' url(' + feed['data'].thumbnail + ')'}"></div>
             <mat-card-subtitle>
-                Posted by: {{feed['data'].author}} created: {{feed['data'].created*1000 | date:'short'}}
+                Posted by: {{feed['data'].author}} created: {{feed['data'].created*1000 | date:'yyyy-MM-dd HH:mm'}}
             </mat-card-subtitle>
-
             <mat-card-title><a class="feee-link" [href]="'https://www.reddit.com/' + feed['data'].permalink">{{feed['data'].title}}</a>
             </mat-card-title>
         </mat-card-header>
@@ -14,13 +13,9 @@
             {{feed['data'].num_comments}} Comments
         </a>
         <button *ngIf="feed['data'].selftext" (click)="openFeedText(feed)">{{showFeedText && (feed['data'].id == selectedFeed['data'].id) ? 'Close' : 'Read More'}}</button>
-        <ng-container *ngIf="showFeedText">
-            <div class="feed-textarea-container" *ngIf="showFeedText && (feed['data'].id == selectedFeed['data'].id)">
-                <textarea rows="15">
-                    {{feed['data'].selftext}}
-                </textarea>
-            </div>
-        </ng-container>
+        <div class="feed-textarea-container" *ngIf="showFeedText && (feed['data'].id == selectedFeed['data'].id)">
+            <textarea rows="15">{{feed['data'].selftext}}</textarea>
+        </div>
         <p mat-card-content>{{feed['data'].score}}</p>
     </mat-card>
 </ng-container>

@@ -16,13 +16,12 @@
         <button *ngIf="feed['data'].selftext" (click)="openFeedText(feed)">{{showFeedText && (feed['data'].id == selectedFeed['data'].id) ? 'Close' : 'Read More'}}</button>
         <ng-container *ngIf="showFeedText">
             <div class="feed-textarea-container" *ngIf="showFeedText && (feed['data'].id == selectedFeed['data'].id)">
-                <textarea rows="5">
+                <textarea rows="15">
                     {{feed['data'].selftext}}
                 </textarea>
             </div>
         </ng-container>
         <p mat-card-content>{{feed['data'].score}}</p>
-
     </mat-card>
 </ng-container>
 

@@ -1,14 +1,14 @@
-import { FeedLimit } from './../feeds/model/feed-limit';
-import { map } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 import { FeedCategories } from '../feeds/model/feed-categories';
+import { FeedsLimits } from '../feeds/model/feed-limits';
 import { FeedsService } from '../feeds/services/feeds.service';
 import { LoadingService } from '../loading/loading.service';
 import { FeedCategory } from './../feeds/model/feed-category';
+import { FeedLimit } from './../feeds/model/feed-limit';
 import { Feed } from './../feeds/model/feeds';
-import { FeedsLimits } from '../feeds/model/feed-limits';
 
 
 @Component({
@@ -31,7 +31,8 @@ export class HomeComponent implements OnInit {
     { value: 10 },
     { value: 25 }
   ]
-
+  hasInput: boolean;
+  inputFeed: HTMLInputElement;
 
   constructor(
     private feedsService: FeedsService,
@@ -43,8 +44,8 @@ export class HomeComponent implements OnInit {
   }
 
   onCategoryChange() {
+    this.hasInput = false;
     this.loadFeedData();
-    this.router.navigateByUrl('feeds/' + this.categorySelected);
   }
 
   onNumberOfFeedsChange() {
@@ -52,30 +53,26 @@ export class HomeComponent implements OnInit {
   }
 
   loadFeedData() {
-    const feedsData$ = this.feedsService.loadFeeds(this.categorySelected)
+    const feedsData$ = this.feedsService.loadFeeds(this.hasInput ? this.inputFeed.value : this.categorySelected)
       .pipe(
-        map(res => res.slice(0, this.feedLimitSelected))
+        map(res => res.slice(0, this.feedLimitSelected)),
+
       );
     this.feeds$ = this.loadingService.showLoaderUntilCompleted(feedsData$);
+    const feedCategory = this.hasInput ? this.inputFeed.value : this.categorySelected;
+    this.router.navigate(['feeds/' + feedCategory], { queryParams: { limit: this.feedLimitSelected } });
   }
 
   onInputFeed(inputFeed: HTMLInputElement) {
-    const hasInput = inputFeed.value !== '';
-    if (hasInput) {
+    this.inputFeed = inputFeed;
+    this.hasInput = inputFeed.value !== '';
+    if (this.hasInput) {
       this.feedCategories.push({
         value: inputFeed.value,
         viewValue: inputFeed.value
       });
-      this.router.navigateByUrl('feeds/' + inputFeed.value);
-    } else {
-      this.router.navigateByUrl('feeds/' + this.categorySelected);
     }
-    const feedsData$ = this.feedsService.loadFeeds(hasInput ? inputFeed.value : this.categorySelected)
-      .pipe(
-        map(res => res.slice(0, this.feedLimitSelected))
-      );
-    this.feeds$ = this.loadingService.showLoaderUntilCompleted(feedsData$)
-
+    this.loadFeedData();
   }
 
 }

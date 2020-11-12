@@ -9,9 +9,9 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { HomeComponent } from '../home/home.component';
 import { LoadingComponent } from '../loading/loading.component';
 import { FeedsCardListComponent } from './feeds-card-list/feeds-card-list.component';
-import { FeedsRoutingModule } from './feeds-routing.module';
 import { FeedsService } from './services/feeds.service';
 import { MatInputModule } from '@angular/material/input';
+import { FeedsRoutingModule } from './feeds-routing.module';
 
 
 

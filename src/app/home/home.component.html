@@ -1,23 +1,29 @@
-<mat-drawer-container class="feed-container">
-    <mat-drawer-content>
-        <mat-form-field>
-            <mat-label>Select feed category</mat-label>
-            <mat-select (selectionChange)="onChange()" [(value)]="categorySelected">
-                <mat-option *ngFor="let feedCategory of feedCategories" [value]="feedCategory.value">
-                    {{feedCategory.viewValue}}</mat-option>
-            </mat-select>
-        </mat-form-field>
-        <mat-form-field class="feed-form-field">
-            <mat-label>Enter feed</mat-label>
-            <input matInput type="text" #inputFeed [value]="inputFeed.value">
-        </mat-form-field>
-        <button mat-button matSuffix (click)="inputFeed.value = ''">
-            <mat-icon>close</mat-icon>
-        </button>
-        <button mat-button matSuffix (click)="onInputFeed(inputFeed)">
-            <mat-icon>done</mat-icon>
-        </button>
-    </mat-drawer-content>
-</mat-drawer-container>
+<ng-container class="feed-container">
+    <mat-form-field>
+        <mat-label>Select feed category</mat-label>
+        <mat-select (selectionChange)="onCategoryChange()" [(value)]="categorySelected">
+            <mat-option *ngFor="let feedCategory of feedCategories" [value]="feedCategory.value">
+                {{feedCategory.viewValue}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field class="feed-form-field">
+        <mat-label>Enter feed</mat-label>
+        <input matInput type="text" #inputFeed [value]="inputFeed.value">
+    </mat-form-field>
+    <button mat-button matSuffix (click)="inputFeed.value = ''">
+        <mat-icon>close</mat-icon>
+    </button>
+    <button mat-button matSuffix (click)="onInputFeed(inputFeed)">
+        <mat-icon>done</mat-icon>
+    </button>
+    <mat-form-field>
+        <mat-label>Select number of feeds</mat-label>
+        <mat-select (selectionChange)="onNumberOfFeedsChange()" [(value)]="feedLimitSelected">
+            <mat-option *ngFor="let feeds of numberOfFeeds" [value]="feeds.value">
+                {{feeds.value}}</mat-option>
+        </mat-select>
+    </mat-form-field>
+</ng-container>
+
 
 <feeds-card-list [feeds]="feeds$ |async"></feeds-card-list>

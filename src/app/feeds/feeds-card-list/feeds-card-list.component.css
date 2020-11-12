@@ -15,3 +15,11 @@
 mat-icon {
     vertical-align: middle;
 }
+
+.feed-textarea-container {
+    text-align: center;
+}
+
+textarea {
+    width: 60%;
+}

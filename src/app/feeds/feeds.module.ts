@@ -5,7 +5,6 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from "@angular/material/icon";
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatSelectModule } from '@angular/material/select';
-import { MatSidenavModule } from '@angular/material/sidenav';
 import { HomeComponent } from '../home/home.component';
 import { LoadingComponent } from '../loading/loading.component';
 import { FeedsCardListComponent } from './feeds-card-list/feeds-card-list.component';
@@ -26,7 +25,6 @@ import { FeedsRoutingModule } from './feeds-routing.module';
     FeedsRoutingModule,
     MatCardModule,
     MatIconModule,
-    MatSidenavModule,
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,

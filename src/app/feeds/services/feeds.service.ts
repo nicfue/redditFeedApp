@@ -12,10 +12,10 @@ export class FeedsService {
     constructor(private http: HttpClient) { }
 
     loadFeeds(categorySelected): Observable<Feed[]> {
-        const URL_SWEDEN = 'https://www.reddit.com/r/sweden/.json';
-        const URL_COVID19 = 'https://www.reddit.com/r/covid19/.json';
-        const URL_ANGULAR = 'https://www.reddit.com/r/angular/.json';
-        const URL_FROM_INPUT = 'https://www.reddit.com/r/' + categorySelected + '/.json';
+        const URL_SWEDEN = 'https://www.reddit.com/r/sweden/.json',
+            URL_COVID19 = 'https://www.reddit.com/r/covid19/.json',
+            URL_ANGULAR = 'https://www.reddit.com/r/angular/.json',
+            URL_FROM_INPUT = 'https://www.reddit.com/r/' + categorySelected + '/.json'
 
 
         let url;

@@ -25,7 +25,7 @@ export class HomeComponent implements OnInit {
     { value: FeedCategories.COVID19, viewValue: 'Covid19' }
   ];
   categorySelected = FeedCategories.SWEDEN;
-  feedLimitSelected = FeedsLimits.LIMIT_10;
+  feedLimitSelected = FeedsLimits.LIMIT_25;
   numberOfFeeds: FeedLimit[] = [
     { value: 5 },
     { value: 10 },

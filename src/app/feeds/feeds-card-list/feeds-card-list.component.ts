@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Feed } from './../model/feeds';
+import { Feed } from '../model/feed';
 
 
 @Component({

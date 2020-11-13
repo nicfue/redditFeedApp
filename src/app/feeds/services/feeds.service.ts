@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map, shareReplay, tap } from 'rxjs/operators';
 import { FeedCategories } from '../model/feed-categories';
-import { Feed } from './../model/feeds';
+import { Feed } from '../model/feed';
 
 
 @Injectable()

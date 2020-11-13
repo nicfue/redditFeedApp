@@ -8,7 +8,7 @@ import { FeedsService } from '../feeds/services/feeds.service';
 import { LoadingService } from '../loading/loading.service';
 import { FeedCategory } from './../feeds/model/feed-category';
 import { FeedLimit } from './../feeds/model/feed-limit';
-import { Feed } from './../feeds/model/feeds';
+import { Feed } from '../feeds/model/feed';
 
 
 @Component({

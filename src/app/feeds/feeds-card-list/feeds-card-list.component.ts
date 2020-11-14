@@ -27,9 +27,7 @@ export class FeedsCardListComponent {
 
     let currentTime = Date.now();
     let timeDifference = currentTime - feedCreated;
-    const MINUTES_AGO = (timeDifference / 60) / 1000,
-      HOURS_AGO = (timeDifference / 60 / 60) / 1000,
-      DAYS_AGO = (timeDifference / 60 / 60) / 1000
+    const MINUTES_AGO = (timeDifference / 60) / 1000, HOURS_AGO = (timeDifference / 60 / 60) / 1000
 
     let created: string;
     if (timeDifference < ONE_HOUR_IN_MILLISECONDS) {
@@ -37,7 +35,7 @@ export class FeedsCardListComponent {
     } else if (timeDifference >= ONE_HOUR_IN_MILLISECONDS && timeDifference <= ONE_DAY_IN_MILLISECONDS) {
       created = `${Math.floor(HOURS_AGO)} hours ago`;
     } else {
-      created = `${Math.floor(DAYS_AGO / 24)} days ago`
+      created = `${Math.floor(HOURS_AGO / 24)} days ago`
     }
     return created;
   }

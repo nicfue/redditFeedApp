@@ -23,21 +23,32 @@ export class FeedsCardListComponent {
   }
 
   feedCreated(feedCreated) {
-    const ONE_HOUR_IN_MILLISECONDS = 3600000, ONE_DAY_IN_MILLISECONDS = 86400000;
+    const ONE_HOUR_IN_MILLISECONDS = 3600000,
+      ONE_DAY_IN_MILLISECONDS = 86400000,
+      ONE_MONTH_IN_MILLISECONDS = 2592000000,
+      ONE_YEAR_IN_MILLISECONDS = 31556952000
 
     let currentTime = Date.now();
-    let timeDifference = currentTime - feedCreated;
-    const MINUTES_AGO = (timeDifference / 60) / 1000, HOURS_AGO = (timeDifference / 60 / 60) / 1000
+    let timeDifference = currentTime - (feedCreated * 1000);
+    const MINUTES_AGO = (timeDifference / 60) / 1000,
+      HOURS_AGO = (timeDifference / 60 / 60) / 1000,
+      DAYS_AGO = HOURS_AGO / 24,
+      MONTHS_AGO = ((timeDifference / 60 / 60 / 60) / 12) / 1000,
+      YEARS_AGO = MONTHS_AGO / 12
 
-    let created: string;
+    let createdTimeAgo: string;
     if (timeDifference < ONE_HOUR_IN_MILLISECONDS) {
-      created = `${MINUTES_AGO} minutes ago`;
+      createdTimeAgo = `${Math.floor(MINUTES_AGO)} minutes ago`;
     } else if (timeDifference >= ONE_HOUR_IN_MILLISECONDS && timeDifference <= ONE_DAY_IN_MILLISECONDS) {
-      created = `${Math.floor(HOURS_AGO)} hours ago`;
+      createdTimeAgo = `${Math.round(HOURS_AGO)} hours ago`;
+    } else if (timeDifference > ONE_DAY_IN_MILLISECONDS && timeDifference <= ONE_MONTH_IN_MILLISECONDS) {
+      createdTimeAgo = `${Math.round(DAYS_AGO)} days ago`;
+    } else if (timeDifference > ONE_MONTH_IN_MILLISECONDS && timeDifference <= ONE_YEAR_IN_MILLISECONDS) {
+      createdTimeAgo = `created ${Math.round(MONTHS_AGO)} months ago`
     } else {
-      created = `${Math.floor(HOURS_AGO / 24)} days ago`
+      createdTimeAgo = `${Math.round(YEARS_AGO)} years ago`;
     }
-    return created;
+    return `created: ${createdTimeAgo}`;
   }
 
 }
